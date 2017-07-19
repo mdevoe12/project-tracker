@@ -5,9 +5,14 @@
 <%= @note.content %>
 </p>
 
+<br />
 
 <%= link_to "edit", edit_project_note_path(@note.project, @note) %>
 
 <br />
 
 <%= link_to "delete", project_note_path(@note.project, @note), method: :delete %>
+
+<br />
+
+<%= link_to "<< back to #{@note.project.name}", project_path(@note.project) %>
