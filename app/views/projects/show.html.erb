@@ -1,5 +1,9 @@
 <h1> Information for <%= @project.name %> </h1>
 
+<h3> Notes: </h3>
+  <% @project.notes.each do |note| %>
+    <%= link_to note.title, project_note_path(@project, note) %>
+  <% end %>
 
 <%= link_to "<<back to project list", projects_path %>
 

@@ -1,0 +1,13 @@
+<h1> <%= @note.title %> </h1>
+
+
+<p>
+<%= @note.content %>
+</p>
+
+
+<%= link_to "edit", edit_project_note_path(@note.project, @note) %>
+
+<br />
+
+<%= link_to "delete", project_note_path(@note.project, @note), method: :delete %>
