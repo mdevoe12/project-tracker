@@ -10,12 +10,13 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      #render new view of validations don't pass
+      flash[:message] = "Username taken, please try again"
+      render :new
     end
   end
 
   def show
-    
+
   end
 
   private
