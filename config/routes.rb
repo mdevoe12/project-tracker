@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     resources :notes, only: [:show, :new, :create, :edit, :update, :destroy]
   end
 
+  resources :users, only: [:new, :create, :show]
+
 end
