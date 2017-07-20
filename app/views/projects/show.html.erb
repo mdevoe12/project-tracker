@@ -2,16 +2,16 @@
 
 <h3> Notes: </h3>
   <% @project.notes.each do |note| %>
-    <li><%= link_to note.title, project_note_path(@project, note) %></ul>
+    <li><%= link_to note.title, user_project_note_path(@user, @project, note) %></ul>
   <% end %>
 
 
 <br /><br />
 
-<%= link_to "new note", new_project_note_path(@project) %>
+<%= link_to "new note", new_user_project_note_path(@user, @project) %>
 |
-<%= link_to "Delete '#{@project.name}' Project", project_path(@project), method: :delete %>
+<%= link_to "Delete '#{@project.name}' Project", user_project_path(@user, @project), method: :delete %>
 
 <br /><br >
 
-<%= link_to "<<back to project list", projects_path %>
+<%= link_to "<<back to project list", user_projects_path(@user) %>

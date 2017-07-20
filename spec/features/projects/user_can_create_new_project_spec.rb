@@ -2,20 +2,21 @@ require 'rails_helper'
 
 RSpec.feature "User projects" do
   scenario "User can create new project" do
+    user = create(:user)
 
-    visit new_project_path
+    visit new_user_project_path(user)
 
-    fill_in "project_name", with: "Build app"
+    fill_in "project_name", with: "Party on"
     click_on "Create Project"
-
-    expect(current_path).to eq(project_path(Project.last))
-    expect(page).to have_content("Build app")
+    expect(current_path).to eq(user_project_path(user, Project.last))
+    expect(page).to have_content("Party on")
   end
 
   scenario "user inputs invalid data" do
-    project = create(:project, name: "test")
+    user = create(:user)
+    project = create(:project, name: "test", user_id: user.id)
 
-    visit new_project_path
+    visit new_user_project_path(user)
 
     fill_in "project_name", with: "test"
     click_on "Create Project"
