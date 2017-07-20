@@ -2,14 +2,15 @@ require 'rails_helper'
 
 RSpec.feature "User views note" do
   scenario "when they view the note's show page" do
-    project = create(:project)
+    user = create(:user)
+    project = create(:project, user_id: user.id)
     note = create(:note, project_id: project.id, content: "grapefruit is bad")
 
-    visit project_path(project)
+    visit user_project_path(user, project)
 
     click_on note.title
 
-    expect(current_path).to eq(project_note_path(project, note))
+    expect(current_path).to eq(user_project_note_path(user, project, note))
     expect(page).to have_content(note.title)
     expect(page).to have_content(note.content)
   end

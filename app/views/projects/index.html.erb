@@ -1,7 +1,7 @@
 <h1> Your current projects: </h1>
 
-<%= link_to "Create new project", new_project_path %>
+<%= link_to "Create new project", new_user_project_path(@user) %>
 
 <% @projects.each do |proj| %>
-  <ul><%=link_to proj.name, project_path(proj) %></ul>
+  <ul><%=link_to proj.name, user_project_path(@user, proj) %></ul>
 <% end %>

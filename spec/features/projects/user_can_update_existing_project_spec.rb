@@ -2,21 +2,23 @@ require 'rails_helper'
 
 RSpec.feature "user can edit existing project" do
   scenario "when they visit the edit path" do
-    project = create(:project)
+    user = create(:user)
+    project = create(:project, user_id: user.id)
 
-    visit edit_project_path(project)
+    visit edit_user_project_path(user, project)
     fill_in "project_name", with: "updated name"
     click_on "Update Project"
 
-    expect(current_path).to eq(project_path(project))
+    expect(current_path).to eq(user_project_path(user, project))
     expect(page).to have_content("updated name")
   end
 
   scenario "fails when they input invalid data" do
-    project_1 = create(:project, name: "build rocket")
-    project_2 = create(:project)
+    user = create(:user)
+    project_1 = create(:project, user_id: user.id, name: "build rocket")
+    project_2 = create(:project, user_id: user.id)
 
-    visit edit_project_path(project_2)
+    visit edit_user_project_path(user, project_2)
     fill_in "project_name", with: "build rocket"
     click_on "Update Project"
 
