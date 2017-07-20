@@ -1,8 +1,9 @@
-<h1> Information for <%= @project.name %> </h1>
-
+<div class="jumbotron">
+  <h1> Information for <%= @project.name %> </h1>
+</div>
 <h3> Notes: </h3>
   <% @project.notes.each do |note| %>
-    <li><%= link_to note.title, user_project_note_path(@user, @project, note) %></ul>
+    <li class="list-group-item"><%= link_to note.title, user_project_note_path(@user, @project, note) %></li>
   <% end %>
 
 

@@ -1,7 +1,10 @@
-<h1> Your current projects: </h1>
+<div class="jumbotron">
+  <h1> Your current projects: </h1>
+</div>
 
 <%= link_to "Create new project", new_user_project_path(@user) %>
 
 <% @projects.each do |proj| %>
-  <ul><%=link_to proj.name, user_project_path(@user, proj) %></ul>
+  <ul class="list-group-item"><%=link_to proj.name, user_project_path(@user, proj) %>
+    <span class="badge"><%= proj.notes.count %></span></ul>
 <% end %>
