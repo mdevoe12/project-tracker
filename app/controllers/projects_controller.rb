@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :check_user, only: [:index]
+
 
   def new
     @user = User.find(params[:user_id])
@@ -17,13 +19,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = current_user
     @project = Project.find(params[:id])
   end
 
   def index
-    @user = User.find(params[:user_id])
-    @projects = Project.all
+    @user = current_user
+    @projects = @user.projects
   end
 
   def edit
@@ -53,6 +55,14 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name)
+  end
+
+  def check_user
+    if current_user.id != params[:user_id].to_i
+      render file: "/public/404"
+    else
+    end
+
   end
 
 end
