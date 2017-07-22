@@ -1,0 +1,10 @@
+<h1>All projects for <%= @user.username %></h1>
+
+<h3>Admin Controls</h3><br />
+<%= link_to "delete", admin_user_path(@user), method: :delete %>
+
+<ul>
+  <% @user.projects.each do |project| %>
+    <li><%= project.name %></li>
+  <% end %>
+</ul>
