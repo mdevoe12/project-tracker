@@ -8,6 +8,8 @@ RSpec.feature "User views note" do
     note = create(:note, project_id: project.id,
                   content: "grapefruit is bad", status_id: status.id)
 
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit user_project_path(user, project)
 
     click_on note.title

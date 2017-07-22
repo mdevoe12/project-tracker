@@ -12,6 +12,8 @@ end
     resources :users, only: [:index]
   end
 
+resources :tags
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
