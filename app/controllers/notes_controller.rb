@@ -17,6 +17,7 @@ class NotesController < ApplicationController
     @project = Project.find(params[:project_id])
     @user = User.find(params[:user_id])
     @note = @project.notes.new(note_params)
+
     if @note.save
       redirect_to user_project_note_path(@user, @project, @note)
     else
@@ -54,7 +55,7 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title, :content)
+    params.require(:note).permit(:title, :content, :status_id)
   end
 
 end
