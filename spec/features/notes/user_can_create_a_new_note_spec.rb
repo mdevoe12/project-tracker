@@ -6,16 +6,19 @@ RSpec.feature "A user can create a new note" do
     project = create(:project, user_id: user.id)
     title = "eat cake"
     content = "eating cake is a delicious undertaking"
+    status = Status.create(name: "Completed")
 
     visit new_user_project_note_path(user, project)
 
     fill_in "note_title", with: title
     fill_in "note_content", with: content
+    select "Completed", from: "note_status_id"
     click_on "Create Note"
 
     expect(current_path).to eq(user_project_note_path(user, project, Note.last))
     expect(page).to have_content(title)
     expect(page).to have_content(content)
+    expect(page).to have_content(status.name)
   end
 
   context "when they enter invalid information" do
@@ -24,11 +27,13 @@ RSpec.feature "A user can create a new note" do
       project = create(:project, user_id: user.id)
       title = ""
       content = "eating cake is a delicious undertaking"
+      status = Status.create(name: "Completed")
 
       visit new_user_project_note_path(user, project)
 
       fill_in "note_title", with: title
       fill_in "note_content", with: content
+      select "Completed", from: "note_status_id"
       click_on "Create Note"
 
       expect(page).to have_content("Note title can't be blank")

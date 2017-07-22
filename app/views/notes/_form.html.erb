@@ -5,5 +5,8 @@
   <%= f.label :content %>
   <%= f.text_area :content %>
 
+  <%= f.label :status %>
+  <%= f.collection_select :status_id, Status.order(:name),:id,:name %>
+
   <%= f.submit %>
 <% end %>

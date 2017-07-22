@@ -4,7 +4,9 @@ RSpec.feature "User views note" do
   scenario "when they view the note's show page" do
     user = create(:user)
     project = create(:project, user_id: user.id)
-    note = create(:note, project_id: project.id, content: "grapefruit is bad")
+    status = create(:status)
+    note = create(:note, project_id: project.id,
+                  content: "grapefruit is bad", status_id: status.id)
 
     visit user_project_path(user, project)
 
