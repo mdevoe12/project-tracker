@@ -1,0 +1,7 @@
+<h1>Projects tagged with <%= @tag.name %></h1>
+
+<ul>
+  <% @tag.projects.each do |project| %>
+    <li><%= link_to project.name, user_project_path(current_user, project) %></li>
+  <% end %>
+</ul>

@@ -8,6 +8,8 @@ RSpec.feature "A user can edit an existing note" do
     status = Status.create(name: "In Progress")
     note = create(:note, status_id: status.id)
 
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit user_project_note_path(user, project, note)
     expect(page).to have_content("In Progress")
 
@@ -29,6 +31,8 @@ RSpec.feature "A user can edit an existing note" do
       project = create(:project, user_id: user.id)
       status = create(:status)
       note = create(:note, status_id: status.id)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
 
         visit user_project_note_path(user, project, note)

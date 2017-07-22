@@ -1,18 +1,31 @@
 <div class="jumbotron">
   <h1> Information for <%= @project.name %> </h1>
 </div>
+
+<h3>Tags:
+  <% if @project.tag_list == "" %>
+    <i><%= "No Tags" %></i>
+  <% else %>
+    <% @project.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag) %>,
+    <% end %>
+  <% end %>
+ </h3>
+
 <h3> Notes: </h3>
   <% @project.notes.each do |note| %>
-    <li class="list-group-item"><%= link_to note.title, user_project_note_path(@user, @project, note) %></li>
+    <li class="list-group-item"><%= link_to note.title, user_project_note_path(current_user, @project, note) %></li>
   <% end %>
 
 
 <br /><br />
 
-<%= link_to "new note", new_user_project_note_path(@user, @project) %>
+<%= link_to "new note", new_user_project_note_path(current_user, @project) %>
 |
-<%= link_to "Delete '#{@project.name}' Project", user_project_path(@user, @project), method: :delete %>
+<%= link_to "edit", edit_user_project_path(current_user, @project) %>
+|
+<%= link_to "Delete '#{@project.name}' Project", user_project_path(current_user, @project), method: :delete %>
 
 <br /><br >
 
-<%= link_to "<<back to project list", user_projects_path(@user) %>
+<%= link_to "<<back to project list", user_projects_path(current_user) %>

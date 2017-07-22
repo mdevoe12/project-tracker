@@ -8,6 +8,8 @@ RSpec.feature "A user can delete existing note" do
     note_1 = create(:note, project_id: project.id, status_id: status.id)
     note_2 = create(:note, project_id: project.id)
 
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit user_project_path(user, project)
     expect(page).to have_content(note_1.title)
     expect(page).to have_content(note_2.title)

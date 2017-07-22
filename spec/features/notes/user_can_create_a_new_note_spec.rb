@@ -8,6 +8,8 @@ RSpec.feature "A user can create a new note" do
     content = "eating cake is a delicious undertaking"
     status = Status.create(name: "Completed")
 
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit new_user_project_note_path(user, project)
 
     fill_in "note_title", with: title
@@ -28,6 +30,8 @@ RSpec.feature "A user can create a new note" do
       title = ""
       content = "eating cake is a delicious undertaking"
       status = Status.create(name: "Completed")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit new_user_project_note_path(user, project)
 
