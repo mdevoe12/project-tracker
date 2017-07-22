@@ -1,8 +1,8 @@
 class Project < ApplicationRecord
   validates :name, presence: true, uniqueness: true
-  has_many :notes
+  has_many :notes, dependent: :destroy
   belongs_to :user
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
 
