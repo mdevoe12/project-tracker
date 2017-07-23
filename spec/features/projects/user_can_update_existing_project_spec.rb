@@ -20,6 +20,9 @@ RSpec.feature "user can edit existing project" do
     project_1 = create(:project, user_id: user.id, name: "build rocket")
     project_2 = create(:project, user_id: user.id)
 
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+
     visit edit_user_project_path(user, project_2)
     fill_in "project_name", with: "build rocket"
     click_on "Update Project"

@@ -15,8 +15,8 @@
   </div>
   <div class="col-xs-4">
     <h3>Quick Links</h3>
-    <li><%= link_to "edit", edit_user_project_note_path(@user, @project, @note) %></li>
-    <li><%= link_to "delete", user_project_note_path(@user, @project, @note), method: :delete %></li>
-    <li><%= link_to "back to #{@project.name}", user_project_path(@user, @project) %></li>
+    <li><%= link_to "edit", edit_user_project_note_path(current_user, @project, @note) %></li>
+    <li><%= link_to "delete", user_project_note_path(current_user, @project, @note), method: :delete %></li>
+    <li><%= link_to "back to #{@project.name}", user_project_path(current_user, @project) %></li>
   </div>
 </div>
