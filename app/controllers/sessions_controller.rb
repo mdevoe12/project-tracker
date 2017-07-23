@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Successful login"
         if @user.role == "default"
-          redirect_to user_projects_path(@user)
+          redirect_to user_projects_path(current_user)
         else
           redirect_to admin_users_path
         end
