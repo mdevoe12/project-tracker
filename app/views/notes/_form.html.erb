@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <%= form_for [@user, @project, @note] do |f| %>
+  <%= form_for [current_user, @project, @note] do |f| %>
     <%= f.label :title %>
     <br />
     <%= f.text_field :title %>

@@ -1,12 +1,24 @@
 <div class="page-header container-fluid">
-  <h1>All projects for <%= @user.username %></h1>
+  <h1>Information for <%= @user.username %></h1>
 </div>
 
-<h3>Admin Controls</h3><br />
-<%= link_to "delete", admin_user_path(@user), method: :delete %>
 
-<ul>
-  <% @user.projects.each do |project| %>
-    <li><%= project.name %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-xs-4">
+    <h3 class="container-fluid">Projects</h3>
+      <ul>
+        <% @user.projects.each do |project| %>
+          <li><%= project.name %></li>
+        <% end %>
+      </ul>
+  </div>
+
+
+  <div class="col-xs-4">
+    <h3 class="container-fluid">Admin Controls</h3>
+      <ul>
+        <li><%= link_to "delete", admin_user_path(@user), method: :delete %></li>
+        <li><%= link_to "all users", admin_users_path %></li>
+      </ul>
+  </div>
+</div>

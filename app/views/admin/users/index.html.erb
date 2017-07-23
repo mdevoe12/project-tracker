@@ -2,6 +2,11 @@
   <h1> Admin Console - Users Index </h1>
 </div>
 
-<% @users.each do |user| %>
-  <%= link_to user.username, admin_user_path(user) %>
-<% end %>
+<div class="row">
+  <div class="col-xs-4">
+  <h3 class="container-fluid">Users</h3>
+    <% @users.each do |user| %>
+      <ul><%= link_to user.username, admin_user_path(user) %></ul>
+    <% end %>
+  </div>
+</div>
