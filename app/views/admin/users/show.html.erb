@@ -1,4 +1,6 @@
-<h1>All projects for <%= @user.username %></h1>
+<div class="page-header">
+  <h1>All projects for <%= @user.username %></h1>
+</div>
 
 <h3>Admin Controls</h3><br />
 <%= link_to "delete", admin_user_path(@user), method: :delete %>
