@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:notice] = "Successful login"
-      redirect_to @user
+      redirect_to user_projects_path(@user)
     else
       flash[:notice] = "Invalid username or password, please try again"
       render :new
