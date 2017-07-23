@@ -1,21 +1,22 @@
-<div class="page-header">
+<div class="page-header container-fluid">
   <h1> <%= @note.title %> </h1>
 </div>
 
-<h3>Note Status: <%= @note.status.name %></h3>
-
-<p>
-<%= @note.content %>
-</p>
-
-<br />
-
-<%= link_to "edit", edit_user_project_note_path(@user, @project, @note) %>
-
-<br />
-
-<%= link_to "delete", user_project_note_path(@user, @project, @note), method: :delete %>
-
-<br />
-
-<%= link_to "<< back to #{@project.name}", user_project_path(@user, @project) %>
+<div class="row">
+  <div class="col-xs-4">
+    <h3>Additional Info</h3>
+    <p>
+    <%= @note.content %>
+    </p>
+  </div>
+  <div class="col-xs-4">
+    <h3>Note Status</h3>
+    <ul><%= @note.status.name %></ul>
+  </div>
+  <div class="col-xs-4">
+    <h3>Quick Links</h3>
+    <li><%= link_to "edit", edit_user_project_note_path(@user, @project, @note) %></li>
+    <li><%= link_to "delete", user_project_note_path(@user, @project, @note), method: :delete %></li>
+    <li><%= link_to "back to #{@project.name}", user_project_path(@user, @project) %></li>
+  </div>
+</div>

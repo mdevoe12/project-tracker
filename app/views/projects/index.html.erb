@@ -1,10 +1,21 @@
-<div class="page-header">
-  <h1> Your current projects: </h1>
+<div class="page-header container-fluid">
+  <h1> <%= current_user.first_name%>'s Dashboard </h1>
 </div>
 
-<%= link_to "Create new project", new_user_project_path(@user) %>
 
-<% @projects.each do |proj| %>
-  <ul class="list-group-item"><%=link_to proj.name, user_project_path(@user, proj) %>
-    <span class="badge"><%= proj.notes.count %></span></ul>
-<% end %>
+
+<div class="row">
+  <div class="col-xs-4">
+    <h3>Projects</h3>
+    <% @projects.each do |proj| %>
+      <ul class="list-group-item"><%=link_to proj.name, user_project_path(@user, proj) %>
+        <span class="badge"><%= proj.notes.count %></span></ul>
+    <% end %>
+  </div>
+  <div class="col-xs-4">
+    <h3>Quick Links</h3>
+    <li><%= link_to "Create new project", new_user_project_path(@user) %></li>
+    <li><%= link_to "View all tags", tags_path %></li>
+  </div>
+
+</div>
