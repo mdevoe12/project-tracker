@@ -1,12 +1,18 @@
-<%= form_for [@user, @project, @note] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-
-  <%= f.label :status %>
-  <%= f.collection_select :status_id, Status.order(:name),:id,:name %>
-
-  <%= f.submit %>
-<% end %>
+<div class="container-fluid">
+  <%= form_for [@user, @project, @note] do |f| %>
+    <%= f.label :title %>
+    <br />
+    <%= f.text_field :title %>
+    <br />
+    <%= f.label :content %>
+    <br />
+    <%= f.text_area :content %>
+    <br />
+    <%= f.label :status %>
+    <br />
+    <%= f.collection_select :status_id, Status.order(:name),:id,:name %>
+    <br />
+    <br />
+    <%= f.submit %>
+  <% end %>
+</div>

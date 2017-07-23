@@ -1,31 +1,34 @@
-<div class="jumbotron">
+<div class="page-header container-fluid">
   <h1> Information for <%= @project.name %> </h1>
 </div>
 
-<h3>Tags:
-  <% if @project.tag_list == "" %>
-    <i><%= "No Tags" %></i>
-  <% else %>
-    <% @project.tags.each do |tag| %>
-      <%= link_to tag.name, tag_path(tag) %>,
+
+
+<div class="col-xs-2">
+  <h3>Notes / Tasks</h3>
+    <% @project.notes.each do |note| %>
+      <li class="list-group-item"><%= link_to note.title, user_project_note_path(current_user, @project, note) %></li>
     <% end %>
-  <% end %>
- </h3>
-
-<h3> Notes: </h3>
-  <% @project.notes.each do |note| %>
-    <li class="list-group-item"><%= link_to note.title, user_project_note_path(current_user, @project, note) %></li>
-  <% end %>
+</div>
 
 
-<br /><br />
+<div class="col-xs-2">
+  <h3>Tags</h3>
+    <% if @project.tag_list == "" %>
+      <li class="list-group-item"><i><%= "No Tags" %></i></li>
+    <% else %>
+      <% @project.tags.each do |tag| %>
+        <li class="list-group-item"><%= link_to tag.name, tag_path(tag) %></li>
+      <% end %>
+    <% end %>
+</div>
 
-<%= link_to "new note", new_user_project_note_path(current_user, @project) %>
-|
-<%= link_to "edit", edit_user_project_path(current_user, @project) %>
-|
-<%= link_to "Delete '#{@project.name}' Project", user_project_path(current_user, @project), method: :delete %>
-
-<br /><br >
-
-<%= link_to "<<back to project list", user_projects_path(current_user) %>
+<div class="col-xs-4">
+  <h3>Quick Links</h3>
+    <li><%= link_to "Create new project", new_user_project_path(@user) %></li>
+    <li><%= link_to "View all tags", tags_path %></li>
+    <li><%= link_to "new note", new_user_project_note_path(current_user, @project) %></li>
+    <li><%= link_to "edit", edit_user_project_path(current_user, @project) %></li>
+    <li><%= link_to "Delete '#{@project.name}'", user_project_path(current_user, @project), method: :delete %></li>
+    <li><%= link_to "Project List", user_projects_path(current_user) %></li>
+</div>

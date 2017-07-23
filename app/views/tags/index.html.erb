@@ -1,0 +1,8 @@
+<div class="page-header container-fluid">
+  <h1>All Tags</h1>
+</div>
+
+
+<% @tags.each do |tag| %>
+  <ul><%= link_to tag.name, tag_path(tag) %></ul>
+<% end %>

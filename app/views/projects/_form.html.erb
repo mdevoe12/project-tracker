@@ -1,10 +1,13 @@
-<div class="input-group in-group-lg">
-<%= form_for [@user, @project] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-
-  <%= f.label :tag_list %>
-  <%= f.text_field :tag_list %>
-<% end %>
+<div class="container-fluid">
+  <%= form_for [@user, @project] do |f| %>
+    <%= f.label :name %>
+    <br />
+    <%= f.text_field :name %>
+    <br />
+    <%= f.label :tag_list %>
+    <br />
+    <%= f.text_field :tag_list %>
+    <br />
+    <%= f.submit %>
+  <% end %>
 </div>

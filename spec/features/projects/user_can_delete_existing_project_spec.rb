@@ -10,7 +10,7 @@ RSpec.feature "user can delete existing project" do
 
     visit user_projects_path(user)
     click_on "#{project_1.name}"
-    click_on "Delete '#{project_1.name}' Project"
+    click_on "Delete '#{project_1.name}'"
 
     expect(current_path).to eq(user_projects_path(user))
     expect(page).to have_content(project_2.name)
