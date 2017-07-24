@@ -8,18 +8,41 @@ user = User.create(first_name: "Matt", last_name: "DeVoe",
                   password: "user")
 
 
-project = Project.create(name: "Build App of Awesome", user_id: user.id)
+project_1 = Project.create(name: "Build App of Awesome", user_id: user.id)
 
-project.tags.create(name: "Turing")
+project_1.tags.create(name: "Turing")
+project_1.tags.create(name: "project")
+project_1.tags.create(name: "rails")
+project_1.tags.create(name: "mod 2")
 
-status_name = ["Archived", "Incubated", "Waiting For", "Next Actions", "Scheduled",
-"In Process", "Completed", "Reference"]
+status_name = ["In process", "Incubated", "Waiting For", "Next Actions", "Scheduled",
+"Archived", "Reference", "Completed"]
 
 status_name.each do |name|
   Status.create(name: name)
 end
 
 note_1 = Note.create(title: "CRUD", content: "CRUDness to be built",
-                     project_id: project.id, status_id: Status.first.id)
+                     project_id: project_1.id, status_id: Status.first.id)
 note_2 = Note.create(title: "Demo", content: "Demo is necessary",
-                     project_id: project.id, status_id: Status.last.id)
+                     project_id: project_1.id, status_id: Status.first.id)
+note_3 = Note.create(title: "Add Graphs API", content: "Use gem, rock out",
+                     project_id: project_1.id, status_id: Status.last.id)
+note_3 = Note.create(title: "Demo", content: "Demo is necessary",
+                    project_id: project_1.id, status_id: Status.last.id)
+
+project_2 = Project.create(name: "Little Shop", user_id: user.id)
+
+project_2.tags.create(name: "Turing")
+project_2.tags.create(name: "project")
+project_2.tags.create(name: "rails")
+project_2.tags.create(name: "mod 2")
+
+note_1 = Note.create(title: "CRUD", content: "CRUDness to be built",
+                     project_id: project_2.id, status_id: Status.first.id)
+note_2 = Note.create(title: "Demo", content: "Demo is necessary",
+                     project_id: project_2.id, status_id: Status.first.id)
+note_3 = Note.create(title: "Add Graphs API", content: "Use gem, rock out",
+                     project_id: project_2.id, status_id: Status.last.id)
+note_3 = Note.create(title: "Demo", content: "Demo is necessary",
+                    project_id: project_2.id, status_id: Status.last.id)

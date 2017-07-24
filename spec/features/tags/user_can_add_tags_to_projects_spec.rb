@@ -13,7 +13,7 @@ RSpec.feature "a user can add tags to a project" do
     visit user_project_path(project.user, project)
 
     expect(page).to have_content(project.name)
-    click_on "edit"
+    click_on "Edit #{project.name}"
     fill_in "project_name", with: "updated name"
     fill_in "project_tag_list", with: "sample tag"
     click_on "Update Project"

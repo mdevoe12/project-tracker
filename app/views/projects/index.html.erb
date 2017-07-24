@@ -6,7 +6,7 @@
 
 <div class="row">
   <div class="col-xs-4">
-    <h3>Projects</h3>
+    <h3 class="container-fluid">Projects</h3>
     <% @projects.each do |proj| %>
       <ul class="list-group-item"><%=link_to proj.name, user_project_path(current_user, proj) %>
         <span class="badge"><%= proj.notes.count %></span></ul>

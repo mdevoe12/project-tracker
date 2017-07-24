@@ -3,17 +3,17 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-4">
-    <h3>Additional Info</h3>
-    <p>
+  <div class="col-xs-3">
+    <h3 class="container-fluid">Content</h3>
+    <p class="container-fluid">
     <%= @note.content %>
     </p>
   </div>
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <h3>Note Status</h3>
     <ul><%= @note.status.name %></ul>
   </div>
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <h3>Quick Links</h3>
     <li><%= link_to "edit", edit_user_project_note_path(current_user, @project, @note) %></li>
     <li><%= link_to "delete", user_project_note_path(current_user, @project, @note), method: :delete %></li>
