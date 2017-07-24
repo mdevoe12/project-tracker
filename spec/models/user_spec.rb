@@ -14,4 +14,13 @@ RSpec.describe User, type: :model do
     expect(user.role).to eq("default")
     expect(user.default?).to be_truthy
   end
+
+  context "validations" do
+    it { is_expected.to validate_presence_of(:username) }
+    it { is_expected.to validate_uniqueness_of(:username) }
+  end
+
+  context "relationships" do
+    it { should have_many(:projects) }
+  end
 end
