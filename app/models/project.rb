@@ -24,6 +24,6 @@ class Project < ApplicationRecord
   def completion_rate
     completed = Status.find_by(name: "Completed")
     count = (notes.where(status: completed.id).count).to_f
-    count != 0 ? ("#{((count) / (notes.count)) * 100} % Complete") : ("No Data")
+    count != 0 ? ("#{((count) / (notes.count)).round(2) * 100} % Complete") : ("0 % Complete")
   end
 end
