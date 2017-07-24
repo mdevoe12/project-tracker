@@ -5,6 +5,8 @@ RSpec.feature "user can see individual project info" do
     user = create(:user)
     project_1 = create(:project, user_id: user.id)
     project_2 = create(:project, user_id: user.id)
+    status = create(:status, name: "Completed")
+    note = create(:note, project_id: project_1.id, status_id: status.id)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

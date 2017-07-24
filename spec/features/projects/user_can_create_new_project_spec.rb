@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.feature "User projects" do
   scenario "User can create new project" do
     user = create(:user)
+    status = create(:status, name: "Completed")
+    
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

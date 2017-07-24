@@ -4,9 +4,9 @@ RSpec.feature "A user can delete existing note" do
   scenario "when they click delete from the note path" do
     user = create(:user)
     project = create(:project, user_id: user.id)
-    status = create(:status)
+    status = create(:status, name: "Completed")
     note_1 = create(:note, project_id: project.id, status_id: status.id)
-    note_2 = create(:note, project_id: project.id)
+    note_2 = create(:note, project_id: project.id, status_id: status.id)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

@@ -5,6 +5,8 @@ RSpec.feature "a user can see all related projects" do
     user = create(:user)
     project = create(:project, user_id: user.id)
     tag = project.tags.create(name: "doomsday plans")
+    status = create(:status, name: "Completed")
+    note = create(:note, project_id: project.id, status_id: status.id)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @chart = @project.pie_chart    
+    @completion = @project.completion_rate
   end
 
   def index
