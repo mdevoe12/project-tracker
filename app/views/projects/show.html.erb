@@ -1,10 +1,12 @@
+
+
 <div class="page-header container-fluid">
   <h1> Information for <%= @project.name %> </h1>
 </div>
 
 
 
-<div class="col-xs-2">
+<div class="col-xs-3">
   <h3>Notes / Tasks</h3>
     <% @project.notes.each do |note| %>
       <li class="list-group-item"><%= link_to note.title, user_project_note_path(current_user, @project, note) %></li>
@@ -12,7 +14,7 @@
 </div>
 
 
-<div class="col-xs-2">
+<div class="col-xs-3">
   <h3>Tags</h3>
     <% if @project.tag_list == "" %>
       <li class="list-group-item"><i><%= "No Tags" %></i></li>
@@ -23,7 +25,14 @@
     <% end %>
 </div>
 
-<div class="col-xs-4">
+
+<div class="col-xs-3">
+  <h3><%= @completion%></h3>
+  <%= pie_chart @chart %>
+</div>
+
+
+<div class="col-xs-3">
   <h3>Quick Links</h3>
     <li><%= link_to "Create new project", new_user_project_path(current_user) %></li>
     <li><%= link_to "View all tags", tags_path %></li>
